@@ -1,0 +1,56 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+class Man
+{
+protected:
+	std::string name;
+	int age;
+public:
+	Man(std::string name, int age) {
+		this->name = name;
+		this->age = age;
+	}
+	void m_show() {
+		cout << "이름 : " << name << endl;
+		cout << "나이 : " << age << endl;
+	}
+};
+class Student : public Man
+{
+	std::string ban;
+	std::string hak;
+public:
+	Student(std::string name, int age, std::string ban, std::string hak) : Man(name, age) {
+		this->ban = ban;
+		this->hak = hak;
+	}
+	void s_show() {
+		m_show();
+		cout << "반 : " << ban << endl;
+		cout << "학번 : " << hak << endl;
+	}
+};
+class Teacher : public Man
+	{
+		std::string jun;
+		std::string code;
+	public:
+		Teacher(std::string name, int age, std::string jun, std::string code) : Man(name, age) {
+			this->jun = jun;
+			this->code = code;
+		}
+		void t_show() {
+			m_show();
+			cout << "전공 : " << jun << endl;
+			cout << "담당과목 : " << code << endl;
+		}
+};
+int main()
+{
+	Student lhs("이현수", 20, "A반", "2024000991");
+	Teacher hsh("한미소", 40, "전산", "C++프로그래밍");
+	lhs.s_show();
+	hsh.t_show();
+	return 0;
+}
